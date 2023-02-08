@@ -322,8 +322,8 @@ max-height: 300px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 275px;
-  padding-bottom: 50px;
+  height: 300px;
+  
 }
 
 /* Changing colours of carousel text and indicators from white to black */

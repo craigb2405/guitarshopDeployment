@@ -306,6 +306,9 @@ max-height: 300px;
   width: 350px;
 }
 
+.carousel-item img {
+  padding-left: 100px;
+}
 .tales {
   width: 100vw;
 }

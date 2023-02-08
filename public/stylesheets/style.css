@@ -34,6 +34,15 @@ body {
   color: #fd7e14;
 }
 
+/* User in session */
+
+#userInSession {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
 
 /* Top Nav - Right Nav with links to login/signup etc */
 

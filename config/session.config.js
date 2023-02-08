@@ -9,7 +9,7 @@ const sessionFunction = (app) => {
       saveUninitialized: false,
       cookie: {
         sameSite: process.env.NODE_ENV === "none",
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         httpOnly: true,
         maxAge: 6000000, // 60 * 1000 ms === 1 min
       },

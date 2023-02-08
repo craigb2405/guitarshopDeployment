@@ -1,6 +1,6 @@
 {
-  "name": "GuitarShop",
-  "version": "0.0.0",
+  "name": "@cyclic.sh/session-store",
+  "version": "0.0.5",
   "private": true,
   "scripts": {
     "start": "node server.js",

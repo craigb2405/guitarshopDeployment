@@ -8,7 +8,7 @@ const sessionFunction = (app) => {
       resave: true,
       saveUninitialized: false,
       cookie: {
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        sameSite: process.env.NODE_ENV === "none",
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
         maxAge: 6000000, // 60 * 1000 ms === 1 min

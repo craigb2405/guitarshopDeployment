@@ -1,0 +1,43 @@
+<div class="container">
+        <h1>Your Customer Reviews</h1>
+        {{> profileLayout}}
+{{#if areThereAnyReviews}}
+
+<div class="profile">
+
+
+      <div id="profileReview">
+      {{#each user.reviews}}
+<p><b>{{writtenBy}}</b></p>
+{{#if active}}
+              <form action="/profile/reviews/{{_id}}/edit" method="GET">
+                <button type="submit">click to edit </button>
+              </form>
+            {{/if}}
+<form action="/profile/reviews/{{_id}}/edit" method="GET">
+      <button class="btn btn-primary"type="submit">click to edit </button>
+      </form>
+
+        <p>{{text}}</p>
+        <p>{{stars}} stars</p>
+        <span class="border-bottom">{{dateCreated}}</span>
+      
+          <div id="individualProductImg">
+      <h2>{{thisReviewIsAbout.productName}}</h2>
+      <img
+        src="{{thisReviewIsAbout.images.first}}"
+        alt={{thisReviewIsAbout.productName}}
+        class="img-thumbnail mx-auto d-block"
+      />
+    </div>
+      {{/each}}
+      </div>
+      
+
+{{else}}
+
+<div><h1>You have not reviewed any products</h1></div>
+
+{{/if}}
+
+</div>

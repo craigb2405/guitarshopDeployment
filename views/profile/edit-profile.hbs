@@ -1,0 +1,51 @@
+<div class="container">
+  
+      <h1>Edit Details</h1>
+              {{> profileLayout}}
+  <div id="form">
+
+
+    <form action="/profile/edit-details" method="POST">
+      <label>Email
+        <input
+          name="email"
+                      class="form-control"
+          placeholder="
+    
+      enter your email"
+          value="{{currentUser.email}}"
+          required
+        />
+              </label>
+        <label>Name
+          <input
+            value="{{currentUser.name}}"
+            type="text"
+            name="name"
+            class="form-control"
+            required
+          />
+        </label>
+      
+        <label>Do you consent to receive marketing emails (Please enter Yes or No)
+          <input
+            value="{{currentUser.consent}}"
+            type="text"
+            name="consent"
+            class="form-control"
+            required
+          />
+        </label>        
+
+     <a href="/profile/change-password" class="btn btn-dark">Change Password</a>
+      <button type="submit" class="btn btn-primary">Update Details</button>
+
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
+      {{#if newUserMessage}}
+        <p>{{newUserMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+
+<div class="container">
+
+    {{> adminLayout}}
+<div id="form" >
+  <h2>{{name}}</h2>
+  <form action="/admin/users/{{_id}}/edit" method="POST">
+
+      
+      <input name="email" value="{{email}}" class="form-control" required />
+        <input type="text" name="name" value="{{name}}" class="form-control" required />
+<label>Change users type (Please enter user or admin)
+          <input
+            value="{{userType}}"
+            type="text"
+            name="consent"
+            class="form-control"
+            required
+          />
+        </label> 
+        <label>User Consent to receive emails (Please enter Yes or No)
+          <input
+            value="{{consent}}"
+            type="text"
+            name="consent"
+            class="form-control"
+            required
+          />
+        </label>    
+
+    <button type="submit" class="btn btn-primary">Edit Details</button>
+                <form method="POST" action="/profile/delete">
+<button class="btn btn-danger" type="submit">Delete User</button>
+</form>
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+    {{#if newUserMessage}}
+      <p>{{newUserMessage}}</p>
+    {{/if}}
+  </form>
+</div>
+</div>

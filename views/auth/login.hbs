@@ -1,0 +1,23 @@
+
+<div class="container">
+<div id="form">
+  <h2>Login</h2>
+  <form action="/login" method="POST">
+
+    
+      <input 
+      {{#if errorMessage}}
+      value="{{email}}"
+      {{/if}}
+      name="email" placeholder="enter your email" class="form-control"/>
+   
+      <input type="password" name="password" placeholder="*****" class="form-control"/>
+   
+
+    <button type="submit" class="btn btn-primary">Log In</button>
+    {{#if errorMessage}}
+      <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+    {{/if}}
+  </form>
+</div>
+</div>

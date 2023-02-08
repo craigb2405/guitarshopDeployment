@@ -1,0 +1,49 @@
+<div class="container">
+      {{> adminLayout}}
+{{#if areThereAnyReviews}}
+
+
+
+<h1>Welcome {{currentUser.name}}</h1>
+      <h3 id="reviewHeader" class="border-bottom">Customer Reviews</h3>
+
+      {{#each reviews}}
+                        <div class="adminReview">
+                <div id="individualProductImg">
+
+      <h2>{{thisReviewIsAbout.productName}}</h2>
+      <img
+        src="{{thisReviewIsAbout.images.first}}"
+        alt={{thisReviewIsAbout.productName}}
+        class="cardimg">
+    </div>
+        <p>Written By: <b>{{writtenBy}}</b></p>
+     
+              <form action="/profile/reviews/{{_id}}/edit" method="GET">
+                <button type="submit">click to edit </button>
+              </form>
+         
+        <p>Review Text: {{text}}</p>
+        <p>Rating: {{stars}}/5 stars</p>
+        <span class="border-bottom">{{dateCreated}}</span>
+      <form action="/admin/reviews/{{_id}}/edit" method="GET">
+      <button class="btn btn-primary" type="submit">click to edit </button>
+      </form>
+
+      {{/each}}
+
+
+      
+
+            
+
+{{else}}
+<div><h1>There are no reviewed products.</h1></div>
+</div>
+
+{{/if}}
+      </div>
+
+
+
+

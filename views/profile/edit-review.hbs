@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Edit your review</h1>
+          {{> profileLayout}}
+
+<form action="/profile/reviews/{{_id}}/edit" method="POST">
+
+  <p><b>{{writtenBy}}</b></p>
+<input type="textarea" value="{{text}}" class="form-control" name="text" size="75">
+
+</label>
+        <label for="productRating" class="form-label">Product Rating 1-5</label>
+        <input
+          type="range"
+          class="form-range"
+          min="0"
+          max="5"
+          step="1"
+          id="productRange"
+          name="stars"
+        />
+        
+       <center><button type="submit" class="btn btn-primary">Submit</button></center> 
+        
+</form>
+
+ <div id="individualProductImg">
+      <h2>{{thisReviewIsAbout.productName}}</h2>
+      <img
+        src="{{thisReviewIsAbout.images.first}}"
+        alt={{thisReviewIsAbout.productName}}
+        class="img-thumbnail mx-auto d-block"
+      />
+
+    </div>
+      <div id="buttonDeleteReview">
+<form action="/profile/reviews/{{_id}}/delete" method="POST">
+<button class="btn btn-danger" type="submit">DELETE</button>
+</form>
+</div>
+</div>

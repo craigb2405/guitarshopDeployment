@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Welcome {{userInSession.name}}</h1>
+        {{> profileLayout}}
+  <div id="profilePositioning">
+
+
+    <div>
+
+      <p><b>Name:</b> {{userInSession.name}}</p>
+      <p><b>Email:</b> {{userInSession.email}}</p>
+      <p><b>Consent to recieve marketing:</b> {{userInSession.consent}}</p>
+
+      <form method="POST" action="/profile/delete">
+        <button class="btn btn-danger" type="submit">Delete My Account</button>
+      </form>
+    </div>
+  </div>
+
+</div>

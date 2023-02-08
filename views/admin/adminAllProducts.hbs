@@ -1,0 +1,19 @@
+<div class="container">
+
+<h2>All Products</h2>
+
+    {{> adminLayout}}
+<div class="productsDisplay">
+
+
+{{#each allProducts}}
+<div class="card shadow-lg p-3 mb-2 bg-body-tertiary rounded" style="width: 18rem;">
+      <a href="/admin/{{_id}}"><img src="{{images.first}}" class="img-thumbnail mx-auto d-block" alt="..."></a>
+  <div class="card-body">
+   <a href="/admin/{{_id}}"> <h5 class="card-title">{{productName}}</h5></a>
+    <p class="card-text">£{{price}}</p>
+  </div>
+</div>
+
+{{/each}}
+</div>

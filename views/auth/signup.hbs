@@ -1,0 +1,36 @@
+
+<div class="container">
+<div id="form" >
+  <h2>Signup</h2>
+  <form action="/signup" method="POST">
+
+      
+      <input name="email" placeholder="email" class="form-control" required />
+      {{!-- {{#if email}}
+      {{email}}
+      {{/if}} --}}
+
+      <input type="password" name="password" placeholder="password" class="form-control"required />
+      <input type="password" name="passwordSecondEntry" placeholder="re-enter your password" class="form-control"required />
+
+   
+      <input type="text" name="name" placeholder="Name" class="form-control" required />
+
+<label>Do you consent to receive marketing</label>
+
+      <select id="consent" name="consent" class="form-control">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        </select>
+    </label>
+    <button type="submit" class="btn btn-primary">Create Account</button>
+
+    {{#if errorMessage}}
+      <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+    {{/if}}
+    {{#if newUserMessage}}
+      <p>{{newUserMessage}}</p>
+    {{/if}}
+  </form>
+</div>
+</div>

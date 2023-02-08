@@ -1,0 +1,30 @@
+<div class="container">
+{{#if areThereAnyFavourites}}
+
+
+      <h1>My Favourites</h1>
+        {{> profileLayout}}
+  <div class="productsDisplay">
+{{#each userPopulated.favourites}}
+<div class="card" style="width: 18rem;">
+ <a href="/products/{{_id}}"><img src="{{images.first}}" class="rounded mx-auto d-block" alt="..." /></a>
+        <div class="card-body">
+         <a href="/products/{{_id}}"><h5 class="card-title">{{productName}}</h5></a>
+          <p class="card-text">£{{this.price}}</p>
+             <form method="POST" action="/profile/favourites/{{this._id}}/remove">
+<button class="btn btn-danger" type="submit">remove from favourites</button>
+          </form>
+        </div>
+      </div>
+{{/each}}
+</div>
+
+
+
+{{else}}
+      <h1>My Favourites</h1>
+        {{> profileLayout}}
+<div><h1>You currently have no favourites.</h1></div>
+
+{{/if}}
+</div>

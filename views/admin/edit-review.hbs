@@ -1,0 +1,33 @@
+<div class="container">
+      {{> adminLayout}}
+  <p><b>{{writtenBy}}</b></p>
+  <form action="/admin/reviews/{{_id}}/edit" method="POST">
+    <label>
+      Edit your review
+      <input type="text" value="{{text}}" class="form-control" name="text" />
+    </label>
+    <label for="productRating" class="form-label">Product Rating 1-5</label>
+    <input
+      type="range"
+      class="form-range"
+      min="0"
+      max="5"
+      step="1"
+      id="productRange"
+      name="stars"
+    />
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <form action="/profile/reviews/{{_id}}/delete" method="POST">
+    <button class="btn btn-danger"  type="submit">DELETE</button>
+  </form>
+  <div id="individualProductImg">
+    <h2>{{thisReviewIsAbout.productName}}</h2>
+    <img
+      src="{{thisReviewIsAbout.images.first}}"
+      alt={{thisReviewIsAbout.productName}}
+      class="img-thumbnail mx-auto d-block"
+    />
+  </div>
+
+</div>

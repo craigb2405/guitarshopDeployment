@@ -1,0 +1,91 @@
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a
+          href="/{{individualProduct.productType}}"
+        >{{individualProduct.productType}}s</a></li>
+      <li
+        class="breadcrumb-item active"
+        aria-current="page"
+      >{{individualProduct.productName}}</li>
+    </ol>
+  </nav>
+  <div class="individualProduct">
+
+    <div id="individualProductImg">
+      <h2>{{individualProduct.productName}}</h2>
+
+      <img
+        src="{{individualProduct.images.second}}"
+        alt="{{individualProduct.productName}}"
+        class="img-thumbnail mx-auto d-block"
+      />
+    </div>
+
+    <div id="individualProductInfo">
+
+      <h2>£{{individualProduct.price}}</h2>
+
+      <ul>
+        <li><b>Name:</b> {{individualProduct.productName}}</li>
+        <li><b>Manufacturer:</b> {{individualProduct.manufacturer}}</li>
+        <li><b>Model:</b> {{individualProduct.model}}</li>
+        <li><b>Colour:</b> {{individualProduct.colour}}</li>
+        <li><br /></li>
+        <li><b>Description</b></li>
+        <li>{{individualProduct.description}}</li>
+      </ul>
+      <form method="POST" action="/profile/add-to-favourites/{{_id}}">
+        <button class="btn btn-success" type="submit">add to favourites</button>
+      </form>
+      <h3 id="reviewHeader" class="border-bottom">Customer Reviews</h3>
+
+      {{#if areThereAnyReviews}}
+        <div id="review">
+
+          {{#each individualProduct.reviews}}
+            <p><b>{{writtenBy}}</b></p>
+            {{#if active}}
+              <form action="/profile/reviews/{{_id}}/edit" method="GET">
+                <button type="submit">click to edit </button>
+              </form>
+            {{/if}}
+            <p>{{text}}</p>
+            <span class="border-bottom">{{stars}} stars</span>
+          {{/each}}
+
+        </div>
+
+      {{else}}
+        <div id="review">This product has no reviews</div>
+      {{/if}}
+
+      <h3>Leave a Review</h3>
+
+      <form
+        action="/products/{{individualProduct._id}}/post-review"
+        method="POST"
+      >
+        <textarea
+          name="text"
+          class="form-control"
+          placeholder="Your Review"
+        ></textarea>
+        <label for="productRating" class="form-label">Product Rating 1-5</label>
+        <input
+          type="range"
+          class="form-range"
+          min="0"
+          max="5"
+          step="1"
+          id="productRange"
+          name="stars"
+        />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </div>
+
+  </div>
+</div>

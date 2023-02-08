@@ -1,0 +1,16 @@
+<div class="container">
+<h2>Current Users</h2>
+    {{> adminLayout}}
+<div id="adminUsers">
+
+{{#each users}}
+<div class="d-flex flex-row mb-2">
+<span class="userDetails"><a href="/admin/users/{{_id}}">{{name}}</a></span>
+
+<span class="userDetails">{{email}}</span>
+</div>
+{{/each}}
+
+
+</div>
+</div>

@@ -1,0 +1,61 @@
+<div class="container">
+    
+    <h2>Edit</h2>
+    {{> adminLayout}}
+<div id="form">
+      <form action="/admin/{{_id}}/edit" method="POST">
+    <div class="mb-3">
+  <label for="productName" class="form-label">Product Name</label>
+  <input type="text" value="{{productName}}" name="productName" class="form-control" id="productName" placeholder="{{productName}}">
+</div>
+    <div class="mb-3">
+  <label for="productType" class="form-label">Product Type</label>
+  <input type="text" value="{{productType}}" name="productType" class="form-control" id="productType" placeholder="{{productType}}">
+</div>
+    <div class="mb-3">
+  <label for="manufacturer" class="form-label">Manufacturer</label>
+  <input type="text" value="{{manufacturer}}" name="manufacturer" class="form-control" id="manufacturer" placeholder="{{manufacturer}}">
+</div>
+    <div class="mb-3">
+  <label for="model" class="form-label">model</label>
+  <input type="text"value="{{model}}" name="model" class="form-control" id="model" placeholder="{{model}}">
+</div>
+    <div class="mb-3">
+  <label for="price" class="form-label">Price</label>
+  <input type="text" value="{{price}}" name="price" class="form-control" id="price" placeholder="{{price}}">
+</div>
+    <div class="mb-3">
+      <img src="{{images}}" class="img-thumbnail" alt="..." />
+      <br/>
+  <label for="images" class="form-label">Image URL</label>
+  <input type="text" value="{{images}}" name="images" class="form-control" id="images" placeholder="{{images}}">
+</div>
+    <div class="mb-3">
+  <label for="colour" class="form-label">Colour</label>
+  <input type="text"  value="{{colour}}" name="colour" class="form-control" id="colour" placeholder="{{colour}}">
+</div>
+    <div class="mb-3">
+  <label for="frets" class="form-label">Frets</label>
+  <input type="text"  value="{{frets}}" name="frets" class="form-control" id="frets" placeholder="{{frets}}">
+</div>
+    <div class="mb-3">
+  <label for="pickups" class="form-label">Pickups</label>
+  <input type="text"  value="{{pickups}}" name="pickups" class="form-control" id="pickups" placeholder="{{pickups}}">
+</div>
+<div class="mb-3">
+  <label for="description" class="form-label">Description</label>
+  <textarea class="form-control"  value="{{description}}" name="description" id="description" rows="3" placeholder="{{description}}">{{description}}</textarea>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+      <form action="/admin/{{_id}}/delete" method="POST">
+      
+      <button type="submit" class="btn btn-danger">Delete Product</button>
+      </form>
+      <br/>
+      <br/>
+</div>
+</div>
+

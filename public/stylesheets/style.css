@@ -39,7 +39,7 @@ body {
 #userInSession {
   display: flex;
   flex-direction: row;
-  align-content: center;
+  align-items:center
   height: 100%;
 }
 

@@ -92,6 +92,46 @@ router.post("/delete", async (req, res, next) => {
     next(err);
   }
 });
+
+router.get("/favourites", isLoggedIn, async (req, res, next) => {
+  try {
+    const userPopulated = await User.findById(
+      req.session.currentUser._id
+    ).populate("favourites");
+    console.log(userPopulated);
+    let areThereAnyFavourites = true;
+    if (userPopulated.favourites.length === 0) {
+      areThereAnyFavourites = false;
+    }
+
+    res.render("profile/favourites", { userPopulated, areThereAnyFavourites });
+  } catch (err) {
+    next(err);
+  }
+});
+router.get("/reviews", isLoggedIn, async (req, res, next) => {
+  try {
+    const user = await User.findById(req.session.currentUser._id).populate({
+      path: "reviews",
+      populate: {
+        path: "thisReviewIsAbout",
+      },
+    });
+
+    console.log(user.reviews);
+
+    let areThereAnyReviews = true;
+    if (user.reviews.length === 0) {
+      areThereAnyReviews = false;
+    }
+
+    await console.log(`USER >>>>> ${user}`);
+    await res.render("profile/reviews", { user, areThereAnyReviews });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post(
   "/add-to-favourites/:productId",
   isLoggedIn,
@@ -106,23 +146,6 @@ router.post(
     }
   }
 );
-
-router.get("/favourites", isLoggedIn, async (req, res, next) => {
-  try {
-    const userPopulated = await User.findById(
-      req.session.currentUser._id
-    ).populate("favourites");
-    console.log(userPopulated);
-    let areThereAnyFavourites = true;
-    if (userPopulated.favourites.length === 0) {
-      areThereAnyFavourites = false;
-    }
-
-    res.render("profile/favourites", { userPopulated, areThereAnyFavourites});
-  } catch (err) {
-    next(err);
-  }
-});
 router.post(
   "/favourites/:productId/remove",
   isLoggedIn,
@@ -167,29 +190,6 @@ router.post("/reviews/:reviewId/delete", isLoggedIn, async (req, res, next) => {
   await review.remove();
 
   await res.redirect("/profile/reviews");
-});
-
-router.get("/reviews", isLoggedIn, async (req, res, next) => {
-  try {
-    const user = await User.findById(req.session.currentUser._id).populate({
-      path: "reviews",
-      populate: {
-        path: "thisReviewIsAbout",
-      },
-    });
-
-    console.log(user.reviews);
-
-    let areThereAnyReviews = true;
-    if (user.reviews.length === 0) {
-      areThereAnyReviews = false;
-    }
-
-    await console.log(`USER >>>>> ${user}`);
-    await res.render("profile/reviews", { user, areThereAnyReviews });
-  } catch (err) {
-    next(err);
-  }
 });
 
 module.exports = router;

@@ -91,12 +91,12 @@ router.post("/login", async (req, res, next) => {
     }
     const user = await User.findOne({ email });
 
-    await console.log(user);
+    console.log(user);
     if (!user) {
-      await res.render("auth/login", { errorMessage: "User not found" });
+      res.render("auth/login", { errorMessage: "User not found" });
     }
     if (!bcrypt.compareSync(password, user.passwordHash)) {
-      await res.render("auth/login", {
+      res.render("auth/login", {
         errorMessage: "Incorrect Password",
         email: email,
       });

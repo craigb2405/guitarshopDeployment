@@ -10,7 +10,7 @@ const sessionFunction = (app) => {
       saveUninitialized: false,
       name: "GuitarShopSess",
       cookie: {
-        sameSite: "none",
+        sameSite: "strict",
         secure: true,
         httpOnly: true,
         maxAge: 6000000, // 60 * 1000 ms === 1 min

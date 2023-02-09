@@ -1,6 +1,6 @@
-const isLoggedIn = async (req, res, next) => {
+const isLoggedIn = (req, res, next) => {
   if (!req.session.currentUser) {
-    await res.render("auth/login", {
+    res.render("auth/login", {
       errorMessage: "You must either log in or sign up",
     });
   }

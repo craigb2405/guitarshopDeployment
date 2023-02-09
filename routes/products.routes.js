@@ -7,7 +7,7 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/route.guard");
 router.get("/all-products", async (req, res, next) => {
   try {
     const allProducts = await Product.find();
-    await res.render("all-products", { allProducts });
+    res.render("all-products", { allProducts });
   } catch (err) {
     next(err);
   }

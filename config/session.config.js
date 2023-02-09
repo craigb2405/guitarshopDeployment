@@ -1,5 +1,5 @@
 const session = require("express-session");
-const { CyclicSessionStore } = require("@cyclic.sh/session-store");
+// const { CyclicSessionStore } = require("@cyclic.sh/session-store");
 
 const sessionFunction = (app) => {
   app.set("trust proxy", 1);
@@ -7,7 +7,7 @@ const sessionFunction = (app) => {
     session({
       secret: process.env.SESS_SECRET,
       resave: true,
-      saveUninitialized: true,
+      saveUninitialized: false,
       cookie: {
         sameSite: "none",
         secure: true,

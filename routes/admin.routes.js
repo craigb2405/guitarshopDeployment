@@ -10,11 +10,12 @@ const {
 const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 
-router.get("/", isLoggedIn, isAdmin, (req, res, next) => {
+router.get("/", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
-    res.render("admin/adminHome", {
-      userInSession: req.session.currentUser,
-    });
+   const userInSession = await User.findById(req.session.currentUser._id)
+    res.render("admin/adminHome", 
+      userInSession
+    );
   } catch (err) {
     next(err);
   }
@@ -24,7 +25,6 @@ router.get("/all-products", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const allProducts = await Product.find();
     console.log(allProducts);
-
     res.render("admin/adminAllProducts", { allProducts });
   } catch (err) {
     next(err);

@@ -6,7 +6,7 @@ const sessionFunction = (app) => {
   app.use(
     session({
       secret: process.env.SESS_SECRET,
-      resave: true,
+      resave: false,
       saveUninitialized: true,
       name: "GuitarShopSess",
       cookie: {

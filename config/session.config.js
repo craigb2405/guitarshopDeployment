@@ -34,5 +34,3 @@ const sessionFunction = (app) => {
 // };
 
 module.exports = sessionFunction;
-
-const app = express();

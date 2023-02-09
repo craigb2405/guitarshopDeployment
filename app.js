@@ -22,7 +22,7 @@ require("./config")(app);
 const capitalize = require("./utils/capitalize");
 const projectName = "GuitarShop";
 
-app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+app.locals.appTitle = `${capitalize(projectName)} by Omar and Craig`;
 
 // Session
 

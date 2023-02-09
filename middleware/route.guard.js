@@ -1,10 +1,17 @@
 const isLoggedIn = (req, res, next) => {
-  if (!req.session.currentUser) {
-    res.render("auth/login", {
-      errorMessage: "You must either log in or sign up",
-    });
-  }
-  next();
+  
+ new Promise((resolve,reject)=>{
+    if(req.session.currentUser){
+      resolve(next())
+
+    }
+    else{
+      reject(res.render('auth/login',{errorMessage:"You must either log in or sign up"}))
+      
+    }
+  })
+
+
 };
 
 const isLoggedOut = (req, res, next) => {

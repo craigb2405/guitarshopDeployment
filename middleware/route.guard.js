@@ -1,6 +1,6 @@
 const isLoggedIn = (req, res, next) => {
   
- new Promise((resolve,reject)=>{
+ const loggedInPromise =new Promise((resolve,reject)=>{
     if(req.session.currentUser){
       resolve(next())
 
@@ -9,6 +9,13 @@ const isLoggedIn = (req, res, next) => {
       reject(res.render('auth/login',{errorMessage:"You must either log in or sign up"}))
       
     }
+  })
+  loggedInPromise
+  .then(()=>{
+    console.log("Works")
+  })
+  .catch((error)=>{
+    console.log("Error, ",error)
   })
 
 
